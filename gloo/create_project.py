@@ -8,6 +8,7 @@ def create_project(project_name = 'DataProject', **keywords):
     
       keywords:
         git: create a git repo? type bool, default false
+        bzr: create a bzr repo? type bool, default false
         full_structure: create a full strucutre? type bool, default false
         packages: define a list of packages to always load, type list, default empty
         logging: automatically start logging. type bool, default false
@@ -23,6 +24,7 @@ def create_project(project_name = 'DataProject', **keywords):
     config = {}
 
     config['git'] = keywords.get('git', False)
+    config['bzr'] = keywords.get('bzr', False)
     config['full_structure'] = keywords.get('full_structure', False)
     config['packages'] = keywords.get('package', [])
     config['logging'] = keywords.get('logging', False)
@@ -55,6 +57,9 @@ def create_project(project_name = 'DataProject', **keywords):
     #Creatgit repo
     if config['git']:
         os.system('git init --quiet')
+        
+    if config['bzr']:
+        os.system('bzr init --quiet')
 
     #Dump into config file
     with open('.config.json', mode='w') as f:
