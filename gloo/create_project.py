@@ -1,3 +1,16 @@
+def make_file(file_name):
+
+    """
+        MakeFile(file_name): makes a file.
+    """
+
+    temp_path = '' + file_name
+    file = open(temp_path, 'w')
+    file.write('')
+    file.close()
+    #print 'Execution completed.'
+
+
 def create_project(project_name = 'DataProject', **keywords):
     """
     Creates the project and creates a skelton directory
@@ -39,7 +52,7 @@ def create_project(project_name = 'DataProject', **keywords):
     map(os.mkdir, folders)
 
     #Create files
-    os.system('touch README.txt')
+    make_file('README.txt')
 
     #Create git repo
     if config['git']:
